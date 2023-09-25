@@ -1,10 +1,10 @@
 <template>
   <div class="main">
-    <my-hero />
+    <my-hero @click="update" />
     <BoxContainer>
       <div class="mail">
         <h1>Мої листи</h1>
-        <EmailList :emails="emails" @remove="removeEmail" />
+        <EmailList :emails="emails" @remove="removeEmail" :isLoading="isLoading"/>
       </div>
     </BoxContainer>
   </div>
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       emails: [],
+      isLoading: false,
     };
   },
   components: {
@@ -31,6 +32,7 @@ export default {
     async fetchEmails() {
       console.log("fetch");
       try {
+        this.isLoading = true;
         const response = await axios.get(
           "https://backend-photoal-98ep.onrender.com/api/emails"
         );
@@ -38,7 +40,13 @@ export default {
         console.log("fetchEmails", response.data);
       } catch (error) {
         alert(error.message);
+      } finally {
+        this.isLoading = false;
       }
+    },
+
+    update() {
+      this.fetchEmails();
     },
 
     removeEmail(email) {

@@ -2,7 +2,8 @@
   <section class="hero">
     <div class="container">
       <h1 class="hero-title">Кольори життя</h1>
-      <my-button type="button" class="hero-button" @click="updatePage">
+      
+      <my-button type="button" class="hero-button" @click="$emit('click')">
         Оновити
       </my-button>
     </div>
@@ -14,14 +15,13 @@ export default {
   data() {
     return {
 
+
         };
   },
   components: {
   },
   methods: {
-    updatePage() {
-      console.log("оновити");
-    },
+
   },
 };
 </script>

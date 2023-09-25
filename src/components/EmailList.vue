@@ -1,5 +1,5 @@
 <template>
-  <div class="conteaner" v-if="emails.length > 0">
+  <div class="conteaner" v-if="emails.length > 0 && !isLoading">
     <transition-group name="email-list">
       <email-item
         class="list"
@@ -23,6 +23,10 @@ export default {
     emails: {
       type: Array,
       required: true,
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
     },
   },
 };
