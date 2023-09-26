@@ -35,11 +35,18 @@ export default {
 
 <style scoped>
 .email {
+  display: block;
   padding: 15px;
   border: 2px solid teal;
   text-align: left;
-  max-width: 45%;
-  gap: 20px;
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .email {
+    display: flex;
+    width: 40%;
+  }
 }
 .email__btns {
   display: flex;

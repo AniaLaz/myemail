@@ -34,8 +34,14 @@ export default {
 
 <style scoped>
 .list {
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  .list {
   display: inline-flex;
 }
+}
+
 .email-list-item {
   display: inline-block;
   margin-right: 10px;
